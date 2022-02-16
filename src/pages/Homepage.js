@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import fetchPosts, { postsFetched } from "../store/posts/actions";
+import fetchPosts from "../store/posts/actions";
 import { selectPosts, selectLoading } from "../store/posts/selectors";
+import { Link } from "react-router-dom";
+
 
 //How do we fetch data right now
 //1. Install axios and import -> actions
@@ -49,7 +51,7 @@ export default function Homepage() {
         : posts.map(post => {
           return (
             <div key={post.id}>
-              <h3>{post.title}</h3>
+              <Link to={`/posts/${post.id}`}><h3>{post.title}</h3></Link>
               <p>{post.content}</p>
             </div>
           )
